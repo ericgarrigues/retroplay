@@ -1,0 +1,5 @@
+logfile: /var/log/serialpad.log
+
+serial:
+    speed: 115200
+    timeout: 10

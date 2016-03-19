@@ -1,0 +1,4 @@
+KERNEL=="ttyUSB*" SUBSYSTEM=="tty" RUN+="/usr/local/bin/padnotify.sh"
+SUBSYSTEM=="input", ATTRS{name}=="serialpad", ENV{ID_INPUT_KEYBOARD}="1"
+SUBSYSTEM=="misc", KERNEL=="uinput", MODE="666", GROUP="uinput"
+KERNEL=="event*", NAME="input/%k", MODE="666"

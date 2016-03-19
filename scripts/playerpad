@@ -1,0 +1,21 @@
+#!/usr/bin/python
+
+import sys
+import yaml
+import serialpad.keymaps as keymaps
+
+from serialpad.serialpad import Pad
+
+cfg_file = open('/etc/serialpad/config.yaml')
+config = yaml.load(cfg_file)
+cfg_file.close()
+
+def main(device):
+    player_num = int(device[-1]) + 1
+    player_keymap = keymaps.player_keys[player_num]
+    pad = Pad(device, player_keymap, config['serial']['speed'])
+    pad.run()
+
+if __name__ == "__main__":
+    device = sys.argv[1]
+    main(device)
